@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Home | TDMU Library {% endblock %}</title>
+
+	<link rel="shortcut icon" href="https://scontent.fsgn5-12.fna.fbcdn.net/v/t1.6435-9/41974075_293537584580592_2158442789631688704_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=QjJ0EC0HtqUAX9Bqwgl&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT9nyA93ZQkzjfCWhKU07OOY9nQpFncews2Abl9tYtcP1g&oe=6255F880">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}" />
+
+	<script src="{% static 'js/jquery.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+	<script src="{% static 'js/charts.js' %}"></script>
+	<script src="{% static 'js/selectivizr-min.js' %}"></script>
+	<script src="{% static 'js/superfish.js' %}"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="main clearfix">
+			<aside class="left-bar">
+				<div class="row logo-back">
+					<div class="col logo">
+						<a href="{% url 'home' %}"><img src="https://account.tdmu.edu.vn/Images/CongThongTinDienTu.png" width="200px"></a>
+					</div>
+				</div>
+				<div id="main-menu-wrapper" class="menu">
+					<ul id="main-menu">
+						<li><a href="{% url 'home' %}"><i class="fa fa-money-check"></i><span>Thống kê</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_books' %}"><i class="fa fa-book" aria-hidden="true"></i><span>Sách</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_employer' %}"><i class="fa fa-users" aria-hidden="true"></i><span>Nhân viên</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'view_issue' %}"><i class="fa fa-chart-bar"></i><span>Danh sách mượn</span><i class="fa fa-angle-right pull-right"></i></a></li>
+						<li><a href="{% url 'contact' %}"><i class="fa fa-bell"></i><span>Phản hồi</span><i class="fa fa-angle-right pull-right"></i></a></li>
+					</ul>
+				</div>
+				<div class="footer">
+					<p><a href="https://www.facebook.com/groups/1481643868792739"><b>Thư viện - Đại học Thủ Dầu Một</b></a></p>
+				</div>
+			</aside>
+
+			<aside class="right-bar">				
+				<div class="row header">
+				<div class="col admin-menu">
+						<div class="row __mobile">
+</div>
+
+<div class="secondary-menu">
+	<ul>
+		<li class="right"><a href="{% url 'admin:index' %}"><i class="fa fa-user-circle" aria-hidden="true"><b>Quản trị viên</b></i></a></li>
+
+		{% block content %}
+		{% if user.is_authenticated %}
+		<b>Xin chào, {{ user.username }}!</b>
+		<li class="right"><a href="{% url 'logout' %}"><i class="fa fa-sign-out-alt" aria-hidden="true"><b>Đăng xuất</b></i></a></li>
+	  {% else %}
+	  <li class="right"><a href="{% url 'login' %}"><i class="fa fa-sign-out-alt" aria-hidden="true"><b>Đăng nhập</b></i></a></li>
+      <b>Vui lòng đăng nhập !!!</b>
+	  {% endif %}
+       {% endblock %}
+	</ul>
+</div>
+	
+					</div>
+				</div>
+				<div class="row content">
+					{% block b_main %}
+					{% endblock %}
+				</div>
+			</aside>
+    </div>
+	</div>
+	
+	<script src="{% static 'sc.js' %}" type="text/javascript"></script>
+
+</body>
+</html>

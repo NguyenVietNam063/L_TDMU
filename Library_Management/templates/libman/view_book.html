@@ -1,0 +1,55 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% block title %} Books {% endblock %}
+{% block b_main %}
+
+<div style class="bg-secondary">
+  <marquee behavior="scroll" scrollamount="6" direction="left">
+    <span id="yui_3_17_2_1_1628786511344_207">Để chủ động phòng, chống dịch COVID-19 trong trạng thái 
+      <span style="color:#0c09c4;">
+      <strong>“bình thường mới"</strong>
+    </span>, Bộ Y tế gửi đến người dân<span style="color:#0c09c4;">
+      <strong>“Thông điệp 5K: KHẨU TRANG – KHỬ KHUẨN – KHOẢNG CÁCH – KHÔNG TỤ TẬP – KHAI BÁO Y TẾ”</strong>
+    </span>. Mong mọi người chấp hành nghiêm chỉnh !</span>
+  </marquee>
+</div>
+
+<br>
+  <div>
+    <form method="GET" action="{% url 'view_books' %}">
+      <input type="text" name="q" value="{{request.GET.q}}" placeholder="Tìm sách...">
+      <input type="submit" value="Tìm kiếm">
+    </form>
+  </div>
+<br>
+
+  {% if books %}
+  <table class="layout">
+    <thead>
+      <th>Mã</th>
+      <th>Tên</th>
+      <th>Tác giả</th>
+      <th>Số lượng</th>
+      <th>Thể loại</th>
+      <th>Nhà xuất bản</th>
+      <th>Dãy</th>
+    </thead>
+  {% for book in books %}
+    <tr>
+      <td> {{ book.isbn_no }}</td>
+      <td>{{ book.book_name }}</td>
+      <td>{{ book.author_name }}</td>
+      <td>{{ book.no_of_books }}</td>
+      <td>{{ book.department }}</td>
+      <td>{{ book.publisher }}</td>
+      <td>{{ book.rack_no }}</td>
+    </tr>
+  {% endfor %}
+</table>
+  {% else %}
+    <p> Không còn sách. </p>
+  {% endif %}
+
+  <div class="footer"><p>Copyright © 2022 Thư Viện Trường Đại Học Thủ Dầu Một</p></div>
+
+{% endblock %}

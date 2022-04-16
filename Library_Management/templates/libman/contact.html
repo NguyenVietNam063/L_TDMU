@@ -1,0 +1,51 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% block title %} Contact {% endblock %}
+{% block b_main %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/contact.css">
+</head>
+
+<div style class="bg-secondary">
+  <marquee behavior="scroll" scrollamount="6" direction="left">
+    <span id="yui_3_17_2_1_1628786511344_207">Để chủ động phòng, chống dịch COVID-19 trong trạng thái 
+      <span style="color:#0c09c4;">
+      <strong>“bình thường mới"</strong>
+    </span>, Bộ Y tế gửi đến người dân<span style="color:#0c09c4;">
+      <strong>“Thông điệp 5K: KHẨU TRANG – KHỬ KHUẨN – KHOẢNG CÁCH – KHÔNG TỤ TẬP – KHAI BÁO Y TẾ”</strong>
+    </span>. Mong mọi người chấp hành nghiêm chỉnh !</span>
+  </marquee>
+</div>
+
+<br>
+<form method="post" class="form">
+  {% csrf_token %}
+      <p>
+          <label for="id_email"><b>Email:</b></label>
+          <input type="email" name="email" maxlength="254" required id="id_email">
+      </p>
+      
+        <p>
+          <label for="id_subject"><b>Tiêu đề:</b></label>
+          <input type="text" name="subject" maxlength="255" required id="id_subject">
+      </p>
+      
+      <p>
+          <label for="id_message"><b>Nội dung:</b></label>
+          <textarea name="message" cols="40" rows="10" required id="id_message"></textarea>
+      </p>
+    <b>  
+  <input type="submit" id="btn" value="Gửi"/>
+  <script language="javascript">
+      var button = document.getElementById("btn");
+      button.onclick = function(){
+          alert("Bạn có chắc muốn gửi phản hồi không?");
+      }
+  </script>
+  </b>
+</form>
+
+<div class="footer"><p>Copyright © 2022 Thư Viện Trường Đại Học Thủ Dầu Một</p></div>
+
+{% endblock %}

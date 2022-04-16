@@ -1,0 +1,141 @@
+{% extends 'libman/base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block b_main %}
+
+<div style class="bg-secondary">
+  <marquee behavior="scroll" scrollamount="6" direction="left">
+    <span id="yui_3_17_2_1_1628786511344_207">Để chủ động phòng, chống dịch COVID-19 trong trạng thái 
+      <span style="color:#0c09c4;">
+      <strong>“bình thường mới"</strong>
+    </span>, Bộ Y tế gửi đến người dân<span style="color:#0c09c4;">
+      <strong>“Thông điệp 5K: KHẨU TRANG – KHỬ KHUẨN – KHOẢNG CÁCH – KHÔNG TỤ TẬP – KHAI BÁO Y TẾ”</strong>
+    </span>. Mong mọi người chấp hành nghiêm chỉnh !</span>
+  </marquee>
+</div>
+
+<br>
+<div class="row clearfix">
+  <div class="row graph_box">
+
+    <div class="row clearfix dashboard-heading">
+      <h3>Biểu đồ</h3>
+    </div>
+            <div class="row">
+              <noscript>
+                <div class="msg notice"><p>Javascript is required to properly run the application.</p>
+              </noscript>
+            </div>
+            <div id="overview" style="width: 600px; height: 400px; margin:0 auto;"></div>
+                      </div>
+</div>
+
+<div class="row clearfix graph_box">
+  <div class="row clearfix dashboard-heading">
+    <h3>Đóng phạt</h3>
+  </div>
+  <div class="row">
+    <div class="col-4 card">
+      <div class="card-box bg-blue">
+        <div class="card-content">
+          <p>Theo ngày</p>
+          <h3>10000 VND</h3>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 card">
+      <div class="card-box bg-green">
+        <div class="card-content">
+          <p>Theo tuần</p>
+          <h3>15000 VND</h3>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 card">
+      <div class="card-box bg-yellow">
+        <div class="card-content">
+          <p>Theo tháng</p>
+          <h3>30000 VND</h3>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 card">
+      <div class="card-box bg-red">
+        <div class="card-content">
+          <p>Theo năm</p> 
+          <h3>90000 VND</h3>
+          <div class="card-icon">
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+var element =  document.getElementById('overview');
+var year =  document.getElementById('year');
+if (typeof(element) != 'undefined' && element != null)
+{
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+var data = google.visualization.arrayToDataTable([
+['Task', 'Total Books Record'],
+["Tổng sách",5],
+
+["Sách mượn", 2],
+
+["Sách mất", 1],
+]);
+
+var options = {
+title: 'Biểu đồ thể hiện sách của thư viện'
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('overview'));
+
+chart.draw(data, options);
+}
+
+}
+
+if (typeof(year) != 'undefined' && year != null)
+{
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() 
+{
+
+var data = google.visualization.arrayToDataTable([
+
+]);
+
+var chart = new google.visualization.BarChart(document.getElementById('year'));
+
+chart.draw(data, options);
+}
+}
+</script>
+
+
+        <div class="footer"><p>Copyright © 2022 Thư Viện Trường Đại Học Thủ Dầu Một</p></div>
+</div>
+
+{% endblock %}

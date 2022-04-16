@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Log in | Library TDMU</title>
+  <link rel="stylesheet" href="/static/css/login.css/">
+  <link rel="shortcut icon" href="https://scontent.fsgn5-12.fna.fbcdn.net/v/t1.6435-9/41974075_293537584580592_2158442789631688704_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=QjJ0EC0HtqUAX9Bqwgl&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT9nyA93ZQkzjfCWhKU07OOY9nQpFncews2Abl9tYtcP1g&oe=6255F880">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="1093040622413-17fi43qbdb1rov4mpcdbg591otp9ruhf.apps.googleusercontent.com">
+</head>
+<body>
+  <br>
+<h1 style="text-align: center;">Đăng nhập</h1>
+<form method="post" class="form">
+{% csrf_token %}
+  <label for="id_username"><b>Tài khoản</b></label> 
+  <input type="text" placeholder="Nhập tài khoản..." name="username" autofocus="" maxlength="254" required="" id="id_username">
+<p>
+  <label for="id_password"><b>Mật khẩu</b></label> 
+  <input type="password" placeholder="Nhập mật khẩu..." name="password" required="" id="id_password">
+</p>
+<br>
+
+  <button type="submit"><b>Đăng nhập</b></button>
+  <br>
+  <br>
+  <p><a class="btn btn-lg btn-danger btn-block" href="{% url 'social:begin' 'google-oauth2' %}"><font size="+1"><b>Đăng nhập bằng Google</b></font></a></p>
+  <span class="helptext"><font size="+1"><a href="/signup/"><b>Bạn chưa có tài khoản ?</a></b></font></span>
+</form>
+</body>
+</html>
